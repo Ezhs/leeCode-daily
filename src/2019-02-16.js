@@ -15,13 +15,21 @@
  */
 var removeDuplicates = function(nums) {
     let result = 0;
-    for (let i = 0; i < nums.length; i++) {
-        var val = nums[i];
-        if (result < 2 || val > nums[result - 2]) {
-            nums[result++] = val;
+    for (let num of nums) {
+        if (result < 2 || num > nums[result - 2]) {
+            nums[result++] = num;
         }
     }
     return result;
+
+    // let result = 0;
+    // for (let i = 0; i < nums.length; i++) {
+    //     var val = nums[i];
+    //     if (result < 2 || val > nums[result - 2]) {
+    //         nums[result++] = val;
+    //     }
+    // }
+    // return result;
 };
 
 let nums1 = [1, 1, 1, 2, 2, 3]; // [1, 1, 2, 2, 3]
