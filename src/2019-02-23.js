@@ -17,16 +17,16 @@
 var maxArea = function(height) {
     let left = 0,
         right = height.length - 1,
-        lastLeft = height[left],
-        lastRight = height[right],
+        lastLeft = height[left], // 存储最大的左侧值
+        lastRight = height[right], // 存储最大的右侧值
         max = 0;
 
     while (left < right) {
+        // 如果不能大于当前的高度 既值也不可能大于上一次的面积 因为 x 轴一直在减小 
         if (height[left] < lastLeft) {
             left++;
             continue;
         }
-
         if (height[right] < lastRight) {
             right--;
             continue;
@@ -36,6 +36,7 @@ var maxArea = function(height) {
         lastRight = height[right];
         max = Math.max(max, Math.min(lastLeft, lastRight) * (right - left));
 
+        // 那边值小 那边移动
         if (lastLeft < lastRight) {
             left++;
         } else {
@@ -48,6 +49,3 @@ var maxArea = function(height) {
 
 let nums = [9,8,6,2,5,4,8,3,7];
 console.log(maxArea(nums));
-
-
-
